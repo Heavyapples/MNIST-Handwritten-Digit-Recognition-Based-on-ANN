@@ -1,0 +1,27 @@
+ann2053598(ID, N_ep, lr, bp, u, v, w, cf): 这是主函数，用于训练一个人工神经网络并进行预测。函数的参数包括：
+
+ID: 需要识别的数字，对于MNIST数据集来说，它的范围是0-9。
+N_ep: 训练的总轮数。
+lr: 学习率，用于在训练过程中更新网络权重。
+bp: 指定后向传播的方法，1表示启发式方法，其他值表示基于微积分的方法。
+u, v, w: 指定网络各层的节点数量。
+cf: 用于指定损失函数的类型，1表示总平方误差（Total Squared Error），2表示交叉熵（Cross-Entropy）。
+initialize_network(u, v, w): 这个函数用于初始化网络权重和偏置。这里的权重初始化方法是使用高斯随机值，而偏置被初始化为零。
+
+forward_propagation(X, weights, biases): 这个函数执行网络的前向传播过程，其中X是输入数据，weights和biases是网络的权重和偏置。
+
+sigmoid(z): 这个函数实现了Sigmoid激活函数，其公式为1 / (1 + exp(-z))。
+
+backward_propagation(X, Y, outputs, activations, weights, biases): 这个函数执行网络的启发式后向传播过程，其中X是输入数据，Y是标签，outputs和activations分别是前向传播过程的输出和激活值。
+
+sigmoid_derivative(z): 这个函数实现了Sigmoid激活函数的导数，其公式为sigmoid(z) * (1 - sigmoid(z))。
+
+compute_cost(Y, outputs, cf): 这个函数用于计算损失值，其中Y是标签，outputs是网络的输出，cf是指定的损失函数类型。
+
+predict(X, weights, biases): 这个函数用于通过已经训练好的网络进行预测。
+
+compute_confusion_matrix(Y, pred): 这个函数用于计算混淆矩阵，其中Y是真实标签，pred是预测标签。
+
+calculus_based_backward_propagation(X, Y, outputs, activations, weights, biases): 这个函数执行基于微积分的后向传播过程。它和启发式后向传播过程的不同之处在于求解梯度的方法。
+
+这个代码的主体是一个三层的全连接神经网络（包括输入层和输出层），并使用Sigmoid激活函数。在训练过程中，可以选择使用两种不同的后向传播方法和损失函数。然后，对训练和测试数据进行预测，并输出预测结果的混淆矩阵。
